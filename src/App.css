@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #202142;
+    color: #fff;
+    line-height: 1.6;
   }
+
+.container{
+    max-width: 620px;
+    margin: auto;
+}
+h1{
+text-align: center;
+margin: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.form-container{
+    padding: 20px;
+    margin: 10px;
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 3px 2px rgba(128, 128, 128, 0.527);
 }
 
-.App-link {
-  color: #61dafb;
+.input-text{
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+.text-box{
+    display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.style-button{
+    background-color: #24a3b6;
+    color: white;
+    width: 100%;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 3px 2px #24a3b688;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.message{
+    text-align: center;
+    margin-top: 10px;
+    color: red;
+}
+
+h2{
+    text-align: center;
+    margin: 10px;
+}
+
+.set-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px 0 10px;
+    
+}
+.size-btn{
+    width: 25%;
+}
+ul{
+    list-style: none;
+    margin: auto;
+}
+
+.text-line{
+    text-decoration: line-through;
+}
+
+.style-item{
+    border: solid 1px gray;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 3px 2px rgba(128, 128, 128, 0.527);
+    border-radius: 5px;
+    position: relative;
+}
+/* .style-list{
+    position: relative;
+} */
+
+.set-btn-reds{ 
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-red{
+    background-color: rgb(240, 76, 76);
+    color: white;
+    width: 45%;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.btn-disable-disabled{
+    background-color: gray;
+}
+
+.btn {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.close{
+    top: 10px;
+    right: 20px;
+    color: red;
+}
+.edit{
+    top: 10px;
+    right: 50px;
+    color: yellow;
+}
+.check{
+    top: 10px;
+    right: 85px;
+    color: white;
+   
+}
+[type='checkbox'] {
+    opacity: 0;
+}
+/* [type='checkbox']:checked ~ label {
+    background: #ff6a95;
+    
+  } */
+
+label{
+    display:inline;
+    position: absolute;
+    top: 10px;
+    right: 85px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .btn-focus:focus {
+    opacity: 0.9;
+    background-color: #4bd8ee;
+
   }
-}
