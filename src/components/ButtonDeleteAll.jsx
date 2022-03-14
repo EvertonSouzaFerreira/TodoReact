@@ -10,7 +10,7 @@ function ButtonDeleteAll({children, isDesable, type, version}) {
          {children} 
         </button>
       )
-    }
+      }
     
     
     export default ButtonDeleteAll
