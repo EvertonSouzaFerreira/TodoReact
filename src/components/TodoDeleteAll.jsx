@@ -4,8 +4,8 @@ import ButtonDeleteDone from './ButtonDeleteDone'
 import ButtonDeleteAll from './ButtonDeleteDone'
 
 
-function TodoDeleteAll({item}) {
-    const {todo, handleDelete, addItem, handleDeleteAll} = useContext(TodoContext)
+function TodoDeleteAll() {
+    const {todo, handleDelete, addItem} = useContext(TodoContext)
 
     const [btndisable, setBtnDisable] = useState(todo.length > 0 ? false : true)
     const [btnColor, setBtncolor] = useState(todo.length > 0 ? '' : 'disabled')
