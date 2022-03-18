@@ -1,21 +1,37 @@
 import { createContext, useState, useEffect } from "react";
 import {v4 as uuidv4} from 'uuid'
 const TodoContext = createContext()
+const SAVED_ITEMS = "savedTodo"
 
 export const TodoProvider = ({children}) => {
     const [todo, setTodo] = useState([]);
-    const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => {
-        fetchTodo()
-    }, [])
+    // useEffect(()=>{
+    //     let savedTodo = JSON.parse(localStorage.getItem(SAVED_ITEMS))
 
-    async function fetchTodo(){
-        const response = await fetch('/todo?_sort=id_order=desc')
-        const data = await response.json()
-        setTodo(data)
-        setIsLoading(false)
-    }
+    //     if (savedTodo) {
+    //         setTodo(savedTodo);
+    //     }
+    // }, [])
+
+    // useEffect(() =>{
+    //     localStorage.setTodo(SAVED_ITEMS, JSON.stringify(todo))
+    // }, [todo])
+
+    
+
+    // const [isLoading, setIsLoading] = useState(true)
+
+    // useEffect(() => {
+    //     fetchTodo()
+    // }, [])
+
+    // async function fetchTodo(){
+    //     const response = await fetch('/todo?_sort=id_order=desc')
+    //     const data = await response.json()
+    //     setTodo(data)
+    //     setIsLoading(false)
+    // }
 
     const [todoDone, setTodoDone]= useState([
         {
@@ -44,22 +60,22 @@ export const TodoProvider = ({children}) => {
    
     // add text
      const addItem = async (newItem) => {
-        const response = await fetch('/todo',{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newItem)
-        })
-        const data = await response.json()
-        
-        setTodo([data, ...todo]) 
+        // const response = await fetch('/todo',{
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newItem)
+        // })
+        // const data = await response.json()
+        newItem.id = uuidv4()
+        setTodo([newItem, ...todo]) 
     }
 
     //delete item
    async function handleDelete(id){
         if (window.confirm('Are you sure you wan o delete')){
-            await fetch(`/todo/${id}`, {method: 'DELETE'})
+            // await fetch(`/todo/${id}`, {method: 'DELETE'})
 
             setTodo(todo.filter((item) => item.id !== id ))
             setTodoOnDone(todoOnDone.filter((item) => item.id !== id))
@@ -70,17 +86,17 @@ export const TodoProvider = ({children}) => {
 
     //update list
     async function updateTodo(id, upItem){
-        const response = await fetch(`/todo/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(upItem)
-        })
-            const data = await response.json()
+        // const response = await fetch(`/todo/${id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(upItem)
+        // })
+        //     const data = await response.json()
 
         setTodo(
-            todo.map((item) => (item.id === id ? {...item, ...data} : item))
+            todo.map((item) => (item.id === id ? {...item, ...upItem} : item))
         ) 
 
         setTodoEdit({
@@ -149,7 +165,7 @@ export const TodoProvider = ({children}) => {
         onDone,
         editText,
         updateTodo,
-        isLoading,
+        
         todoEdit,
         handleAllTask,
         todoDone,

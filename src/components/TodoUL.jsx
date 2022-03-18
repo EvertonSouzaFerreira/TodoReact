@@ -10,7 +10,7 @@ function TodoUL() {
    
 
    if(todoDoneAll === 'done'){
-        return isLoading ?(<Spinner />):(
+        return (
             <>
             <ul className="style-list">
                 {!todoDone || todoDone.length === 0 || !todo || todo.length === 0 ? <p className='style-item'>"There is no more tasks only done"</p> : todoDone.map((item) =>
@@ -26,7 +26,7 @@ function TodoUL() {
     }
 
   else if (todoDoneAll === 'all'){
-   return isLoading ?(<Spinner />): (
+   return  (
     <>
       <ul className="style-list">
           {!todo || todo.length === 0 ? <p className='style-item'>"There is no more tasks"</p> : todo.map((item) =>
@@ -42,7 +42,7 @@ function TodoUL() {
   )}
 
   else if (todoDoneAll === 'allDone'){
-    return isLoading ?(<Spinner />):(
+    return (
         <>
        <ul className="style-list">
            {!todoOnDone || todoOnDone.length === 0 || !todo || todo.length === 0 ? <p className='style-item'>"There is no more tasks to be done"</p> : todoOnDone.map((item) =>
