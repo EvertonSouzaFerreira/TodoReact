@@ -6,17 +6,17 @@ const SAVED_ITEMS = "savedTodo"
 export const TodoProvider = ({children}) => {
     const [todo, setTodo] = useState([]);
 
-    // useEffect(()=>{
-    //     let savedTodo = JSON.parse(localStorage.getItem(SAVED_ITEMS))
+    useEffect(()=>{
+        let savedTodo = JSON.parse(localStorage.getItem(SAVED_ITEMS))
 
-    //     if (savedTodo) {
-    //         setTodo(savedTodo);
-    //     }
-    // }, [])
+        if (savedTodo) {
+            setTodo(savedTodo);
+        }
+    }, [])
 
-    // useEffect(() =>{
-    //     localStorage.setTodo(SAVED_ITEMS, JSON.stringify(todo))
-    // }, [todo])
+    useEffect(() =>{
+        localStorage.setItem(SAVED_ITEMS, JSON.stringify(todo))
+    }, [todo])
 
     
 
@@ -144,17 +144,25 @@ export const TodoProvider = ({children}) => {
 
     // Delete all done tasks
     function handleDeleteDone(){
-        setTodoDone('')
-        setTodo(todo.filter((item) => !item.done ))
+        if(window.confirm('Are you sure you want to deleteDone?')){
+            setTodoDone('')
+            setTodo(todo.filter((item) => !item.done ))
+        }
+        
        
     }
     
     // Delete al tasks
 
-    function handleDeleteAll(){
-        setTodo('')
-        setTodoDone('')
-        setTodoOnDone('')
+    function handleDeleteAllTasks(){
+        if(window.confirm('Are you sure you want o deleteAll?')){
+            setTodo('')
+            setTodoDone('')
+            setTodoOnDone('')
+            console.log("test button")
+        }
+        
+        
     }
 
     return <TodoContext.Provider
@@ -172,7 +180,7 @@ export const TodoProvider = ({children}) => {
         todoOnDone,
         todoDoneAll,
         handleDeleteDone,
-        handleDeleteAll,
+        handleDeleteAllTasks,
         
     }}
     >

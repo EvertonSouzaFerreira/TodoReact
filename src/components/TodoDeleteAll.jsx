@@ -1,7 +1,7 @@
 import React, {useState,useContext,useEffect} from 'react'
 import TodoContext from './context/TodoContext'
 import ButtonDeleteDone from './ButtonDeleteDone'
-import ButtonDeleteAll from './ButtonDeleteDone'
+import ButtonDeleteAllTask from './ButtonDeleteAllTask'
 
 
 function TodoDeleteAll() {
@@ -25,8 +25,8 @@ function TodoDeleteAll() {
 
   return (
     <div className="set-btn-reds">
-           <ButtonDeleteDone isDesable={btndisable} className="btn-red " type="button" version={btnColor}>Delete Done tasks</ButtonDeleteDone>
-           <ButtonDeleteAll  isDesable={btndisable} className="btn-red " type='button' version={btnColor}>Delete all tesks</ButtonDeleteAll>
+           <ButtonDeleteDone isDesable={btndisable}  type="button" version={btnColor}>Delete Done tasks</ButtonDeleteDone>
+           <ButtonDeleteAllTask isDesable={btndisable}  type='button' version={btnColor}>Delete all tesks</ButtonDeleteAllTask>
        </div>
   )
 }

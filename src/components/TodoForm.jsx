@@ -33,7 +33,7 @@ useEffect(() =>{
         setBtncolor('disabled')
         setMessage(null)
 
-    }else if(value !== '' && value.trim().length <=3){
+    }else if(value !== '' && value.trim().length <=2){
         setBtnDisable(true)
         setBtncolor('disabled')
         setMessage('The messagem have o be more then 3 character')
